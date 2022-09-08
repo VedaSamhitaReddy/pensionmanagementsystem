@@ -1,0 +1,62 @@
+<form (ngSubmit)="onSubmit()">
+    <div class="row mb-5">
+        <h4 class="card-title">Pension Details</h4>
+        <div class="headerspace"></div>
+        <div class="col-6 mb-3">
+            <div style="margin-top:50px"></div>
+            <span style="font-weight: bold;font-style:italic">Enter Aadhaar Number :</span>
+            <input type="text" class="form-control" [(ngModel)]="credentials.aadhaarNumber" #aadhar="ngModel" 
+            [class.is-invalid]="aadhar.invalid && aadhar.touched" name="AadhaarNumber" maxlength="12" pattern="^[0-9]+$" required>
+            <div *ngIf="aadhar.invalid && (aadhar.dirty || aadhar.touched)">
+                <small class="text-danger" *ngIf="aadhar.errors?.required">
+                Aadhaar Number is Required
+                </small> 
+                <small class="text-danger" *ngIf="aadhar.errors?.pattern">
+                Aadhaar Number should contain only numbers
+                </small>    
+            </div>
+        </div>
+<div class="container-fluid">
+            <button type="submit" class="btn btn-primary">Fetch Pension Details</button>
+            <span class="space"></span>
+            <button type="submit" (click)="navigateBack()" class="btn btn-success">Home</button>
+</div>
+</div>
+</form>
+
+<div class="mb-3" *ngIf="isShown">
+    <table class="table table-hover table-sm">
+        <thead>
+            <tr style="background-color:forestgreen ;color: rgba(255, 255, 255, 0.757);">
+                <th>Aadhaar Number</th>
+                <th>Name</th>
+                <th>Date Of Birth</th>
+                <th>PAN</th>
+                <th>Salary Earned</th>
+                <th>Allowances</th>
+                <th>Bank Name</th>
+                <th>Account Number</th>
+                <th>Bank Type</th>
+        </tr>
+        </thead>
+       <tbody> 
+        <tr *ngFor="let value of pension">
+                <td>{{value.aadhaarNumber}}</td>
+                <td>{{value.name}}</td>
+                <td>{{value.dateOfBirth}}</td>
+                <td>{{value.pan}}</td>
+                <td>{{value.salaryEarned}}</td>
+                <td>{{value.allowances}}</td>
+                <td>{{value.bankDetails.bankName}}</td>
+                <td>{{value.bankDetails.accountNumber}}</td>
+                <td>{{value.bankDetails.typeOfBank}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div  *ngIf="error" class="mx-auto" style="max-width: 50%; border-radius: 12px;">
+    <div class="alert alert-danger" style="text-align: center;" >
+        {{errorMessage}}
+    </div>
+</div>
+

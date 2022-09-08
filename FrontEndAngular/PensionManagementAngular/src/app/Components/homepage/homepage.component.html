@@ -1,0 +1,30 @@
+<button *ngIf="isLoggedIn" (click)="logoutUser()" mat-raised-button style="float:right;">Logout</button>
+<br>
+<br>
+<h2>Welcome to Pension Management System</h2> 
+<div class="card">
+  <div  *ngIf="isLoggedIn()" class="card-body">
+    <h4 class="card-title" style="color:indigo;font-weight:bold;">Pension Details</h4>
+    <p class="card-text">To display all pension details.</p>
+    <a href="#" class="btn btn-success" style="color:white;margin-top:20px" routerLink="/pensiondetails">PensionDetails</a>
+  </div>
+</div> 
+<div class="card-deck">
+<div  *ngIf="isLoggedIn()" class="card-body">
+  <h4 class="card-title" style="margin-top:5px;color:indigo;font-weight:bold">ProcessPensionDetails</h4>
+  <p style="margin-top:20px">To display all process pension details like BankServiceCharge and PensionAmount. Then navigate to DisbursePensionAmount and check status of pension Amount.</p>
+  <a href="#" class="btn btn-success" style="color:white;margin-top:10px" routerLink="/processpension">ProcessPensionDetails</a>
+</div>
+</div> 
+<section class="footer">
+  <footer class="text-center text-white" style="background-color:indigo;">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2022 Copyright:
+      <a class="text-white">Pension Management System.com</a>
+    </div>
+  </footer>
+</section>
+<div class="container mt-3">
+    <router-outlet></router-outlet>
+</div>
+  

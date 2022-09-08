@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <img class="img2" src="assets/images/Pension-Portal-Header.JPG">
+    <img class="img1" src="assets/images/pension-management-button.jpg">
+    <form (ngSubmit)='clickLoginBtn()' #userForm='ngForm' method="POST">
+    <div class="box">
+            <div class="form-group inputBox">
+                <input type="text" class="form-control" [class.is-invalid]="userName.invalid && userName.touched"
+                 name="userName" id="userName" #userName="ngModel"
+                    [(ngModel)]='userModel.userName' minlength="3" maxlength="20" pattern="^[a-zA-Z]+$" required />
+                <label>Username:<span class="text-danger">*</span></label>
+                <div *ngIf="userName.invalid && (userName.dirty || userName.touched)">
+                    <small class="text-danger" *ngIf="userName.errors?.required">
+                    Username is Required
+                    </small> 
+                    <small class="text-danger" *ngIf="userName.errors?.minlength">
+                    Username should contain min 3 characters
+                    </small> 
+                    <small class="text-danger" *ngIf="userName.errors?.maxlength">
+                    Username should not be more than 20 Characters
+                    </small> 
+                    <small class="text-danger" *ngIf="userName.errors?.pattern">
+                    Username should contain only alphabets
+                    </small>    
+                </div>
+            </div>
+
+            <div class="form-group inputBox">
+                <input type="password" class="form-control" name="password" id="password" #password="ngModel"
+                    [(ngModel)]='userModel.password'  required />
+                <label>Password :<span class="text-danger">*</span></label>
+                <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                    <small class="text-danger" *ngIf="password.errors?.required">
+                        Password is Required
+                    </small> 
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-primary active mt-3 mx-3" type="submit" [disabled]="!userForm.valid">Login</button> 
+            </div>
+        </div>
+        </form>
+</div> 
+<div  *ngIf="error" class="mx-auto" style="max-width: 50%; border-radius: 12px;">
+    <div class="text-danger" style="text-align: center;" >
+        {{errorMessage}}
+    </div>
+</div>
+
+
+    
+    

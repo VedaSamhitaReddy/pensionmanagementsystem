@@ -1,0 +1,19 @@
+.space {
+    width: 30px;
+    height: auto;
+    display: inline-block;
+  }
+
+  h4{
+    padding: 15px;
+    text-align: center;
+    background-color:maroon;
+    color: white;
+    font-size: 25px;
+  
+  }
+  .headerspace{
+    width:100%;
+    
+
+  }
